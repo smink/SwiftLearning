@@ -10,7 +10,7 @@
 import Foundation
 /*:
 ## Convenient Initializing
-Initializers are used to initialize your class/structure. The special `init` method is used as the initializer and should be defined with parameters that will initialize your stored properties. Swift provides a way to declare another type of initializer that could be more *convenient*. These `convenience` initializers must *delegate* to another `convenience` initializer or to an actual `init`.
+Initializers are used to initialize your class/structure. The special `init` method is used as the initializer and should be defined with parameters that will initialize your stored properties. Swift provides a way to declare another type of initializer that could be more *convenient*. These `convenience` initializers must *delegate* to another `convenience` initializer or to a custom initializer.
 */
 class President {
     
@@ -44,6 +44,31 @@ var abe = President(firstName: "Abraham", lastName: "Lincoln")
 /*:
 Above we created a `class` President that has 1 initializer defined to initialize all the stored properties and 2 `convenience` initializers to give the option to create an instance of a President with just first and last names or with no values.
 */
+/*:
+## Failable Initializers
+ When implementing custom initializers, it may be appropriate to fail the initialization. You can indicate that an initializer can fail with a `init?` initializer. Then within the initializer, you return `nil` and the result of the stored instance will be `nil`.
+*/
+class PresidentFailable {
+
+    var age: Int
+
+    init?(age: String) {
+        if let ageNum = Int(age) {
+            self.age = ageNum
+        } else {
+            return nil
+        }
+    }
+}
+
+if let failable = PresidentFailable(age: "fifty") {
+    print("The president is \(failable.age)")
+} else {
+    print("prez didn't get initialized")
+}
+/*:
+ Above we created a `PresidentFailable` class that has a failable initializer. We create an instance of `PresidentFailable` and by leveraging `if let` optional binding, and print a string of the president’s age.
+ */
 /*:
 ## Optional Chaining
 You will create programs that have properties that have not been initialized. This means that you need to check if the property does have a value and then access the properties or call methods on that property. Optional chaining provides you the ability to access or call methods of a property contained in a class/structure without having to check for `nil`.
@@ -325,10 +350,9 @@ Above we created `President3`, `Term4`, and `WhiteHouse` classes. `President3` s
 Identity operators are used to determine if two instances of the same class refer to the same location in memory; they are in fact the same instance. Identity operators for reference types are `===` three equal symbols or `!==` exclamation point and two equal symbols. This is not to be confussed with equatable operators `==` and `!=`, explained in [Protocols](Protocols), which typically compare the actual property values in each instance.
 */
 let president10_1_a = President(firstName: "John", lastName: "Tyler")
+let president10_2_a = President(firstName: "John", lastName: "Tyler")
 
 let president10_1_b = president10_1_a
-
-let president10_2_a = President(firstName: "John", lastName: "Tyler")
 
 if(president10_1_a === president10_1_b) {
     
@@ -364,7 +388,7 @@ private class SenateMember {        // explicitly private class
     var firstName: String?          // implicitly private variable
     var lastName: String?           // implicitly private variable
     
-    private func name() -> String { // explicitly private function
+    private func name() -> String { // explicitly private method
     
         return "\(firstName) \(lastName)"
     }
@@ -373,7 +397,7 @@ private class SenateMember {        // explicitly private class
 Above we have created 3 classes showing what control access rules are allowed to set and what is explicitly and implicitly applied.
 */
 /*:
-**Exercise:** Build upon your `Dog` and `Cat` classes in the previous exercise by applying the appropriate access control for each class/class member. Add a `Owner` class that contains a collection of `Dog` instances and `Cat` instances. Have your `Dog` and `Cat` hold the correct reference type to an `Owner` instance. The `Ower` property of the `Cat` instance reference optional. Provide a `subscript` to interact with your `Dog` and `Cat` instances.
+**Exercise:** Build upon your `Dog` and `Cat` classes in the previous exercise by applying the appropriate access control for each class/class member. Add a `Owner` class that contains a collection of `Dog` instances and `Cat` instances. Have your `Dog` and `Cat` hold the correct reference type to an `Owner` instance. The `Ower` property of the `Cat` instance reference is optional. Provide a `subscript` to interact with your `Dog` and `Cat` instances.
 */
 /*:
 **Constraints:**
@@ -386,7 +410,6 @@ Above we have created 3 classes showing what control access rules are allowed to
 **Checkpoint:**
 At this point, we learned about other features that classes/structures support such as lazy initialization of properties and subscripts to interact with classes/structures in a collection type way. We also learned about how you can change property values in value types within the instance as well as testing if two instances are identical. Finally we learned how to avoid memory leaks by using the correct reference type and how to leverage the access controls for properties, functions, classes and class members. 
 */
-
 /*:
 **Keywords to remember:**
 - `convenience` = define an initializer that delegates the initialization to other initializers
