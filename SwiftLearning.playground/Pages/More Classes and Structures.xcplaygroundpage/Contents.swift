@@ -1,11 +1,8 @@
 /*:
-[Table of Contents](Table%20of%20Contents) | [Previous](@previous) | [Next](@next)
-*/
-/*:
-# More Classes & Structures
-*/
-/*:
-> **Session Overview:** Last session we learned about the main features of classes and structures. This session explains other features of classes and structures that you will leverage to make your programs more useable and readable.
+ [Table of Contents](@first) | [Previous](@previous) | [Next](@next)
+ - - -
+ # More Classes & Structures
+ * callout(Session Overview): Last session we learned about the main features of classes and structures. This session explains other features of classes and structures that you will leverage to make your programs more useable and readable.
 */
 import Foundation
 /*:
@@ -397,39 +394,32 @@ private class SenateMember {        // explicitly private class
 Above we have created 3 classes showing what control access rules are allowed to set and what is explicitly and implicitly applied.
 */
 /*:
-**Exercise:** Build upon your `Dog` and `Cat` classes in the previous exercise by applying the appropriate access control for each class/class member. Add a `Owner` class that contains a collection of `Dog` instances and `Cat` instances. Have your `Dog` and `Cat` hold the correct reference type to an `Owner` instance. The `Ower` property of the `Cat` instance reference is optional. Provide a `subscript` to interact with your `Dog` and `Cat` instances.
-*/
-/*:
-**Constraints:**
-- Use `weak`
-- Use `unowned`
-- Use `subscript`
-- Create a `convenience` initializer for creating your `Dog` and `Cat` instance
-*/
-/*:
-**Checkpoint:**
-At this point, we learned about other features that classes/structures support such as lazy initialization of properties and subscripts to interact with classes/structures in a collection type way. We also learned about how you can change property values in value types within the instance as well as testing if two instances are identical. Finally we learned how to avoid memory leaks by using the correct reference type and how to leverage the access controls for properties, functions, classes and class members. 
-*/
-/*:
-**Keywords to remember:**
-- `convenience` = define an initializer that delegates the initialization to other initializers
-- `lazy` = define a stored property to be initialized when the property is first accessed
-- `subscript` = provide the ability to access/mutate a class/structure with subscripts as in `[5]`
-- `mutating` = allowing a value type instance method to change properties within the instance
-- `weak` = defining a optional stored property as storing a weak reference to avoid *strong reference cycles*
-- `unowned` = defining a non optional stored property as storing an unowned reference to avoid *strong reference cycles*
-- `public` = marks the class/member visible outside the module
-- `internal` = marks the class/member visible only to inside a module
-- `private` = marks the class/member visible to only the class
-*/
-/*:
-**Supporting Chapters:**
-- [Subscripts](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Subscripts.html)
-- [Initialization](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html)
-- [Optional Chaining](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/OptionalChaining.html)
-- [ARC](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html)
-- [Access Control](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html)
-*/
-/*:
-[Table of Contents](Table%20of%20Contents) | [Previous](@previous) | [Next](@next)
-*/
+ - - -
+ * callout(Exercise): Build upon your `Dog` and `Cat` classes in the previous exercise by applying the appropriate access control for each class/structure member. Add a `Owner` class that contains a collection of `Dog` instances and `Cat` instances. Have your `Dog` and `Cat` hold the correct reference type to an `Owner` instance. The `Ower` property of the `Cat` instance reference is optional. Provide a `subscript` to interact with your `Dog` and `Cat` instances.
+ 
+ **Constraints:**
+ - Use `weak`
+ - Use `unowned`
+ - Use `subscript`
+ - Create a `convenience` initializer for creating your `Dog` and `Cat` instance
+ * callout(Checkpoint): At this point, we learned about other features that classes/structures support such as lazy initialization of properties and subscripts to interact with classes/structures in a collection type way. We also learned about how you can change property values in value types within the instance as well as testing if two instances are identical. Finally we learned how to avoid memory leaks by using the correct reference type and how to leverage the access controls for properties, functions, classes and class members.
+ 
+ **Keywords to remember:**
+ - `convenience` = define an initializer that delegates the initialization to other initializers
+ - `lazy` = define a stored property to be initialized when the property is first accessed
+ - `subscript` = provide the ability to access/mutate a class/structure with subscripts as in `[5]`
+ - `mutating` = allowing a value type instance method to change properties within the instance
+ - `weak` = defining a optional stored property as storing a weak reference to avoid *strong reference cycles*
+ - `unowned` = defining a non optional stored property as storing an unowned reference to avoid *strong reference cycles*
+ - `public` = marks the class/member visible outside the module
+ - `internal` = marks the class/member visible only to inside a module
+ - `private` = marks the class/member visible to only the class
+ * callout(Supporting Materials): Chapters and sections from the Guide and Vidoes from WWDC
+ - [Guide: Subscripts](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Subscripts.html)
+ - [Guide: Initialization](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html)
+ - [Guide: Optional Chaining](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/OptionalChaining.html)
+ - [Guide: ARC](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html)
+ - [Guide: Access Control](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html)
+ - - -
+ [Table of Contents](@first) | [Previous](@previous) | [Next](@next)
+ */

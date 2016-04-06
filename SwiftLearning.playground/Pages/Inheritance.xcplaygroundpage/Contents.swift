@@ -1,20 +1,17 @@
 /*:
-[Table of Contents](Table%20of%20Contents) | [Previous](@previous) | [Next](@next)
-*/
-/*:
-# Inheritance
-*/
-/*:
- > **Session Overview:** Code reuse is paramount in all programming languages. For languages that support object oriented programming or *OOP*, such as Swift, code inheritance is a technique in sharing and extending code within your programs.
+ [Table of Contents](@first) | [Previous](@previous) | [Next](@next)
+ - - -
+ # Inheritance
+ * callout(Session Overview): When you think of inheritance, you probably think of material wealth that your parents or grandparents pass along to you when they die. Or possibly the genes you inherited from your parents and grandparents. Those aspects also ring true in object oriented programming. Inheritance is a technique in sharing and extending code within your programs and is an attribute of languages that support object oriented programming or *OOP*, such as Swift.
  */
 import Foundation
 /*:
  ## What Is It?
- When you think of inheritance, you probably think of material wealth that your parents or grandparents pass along to you when they die. Or possibly the genes you inherited from your parents and grandparents. Those aspects also ring true in object oriented programming. In the context of OOP, inheritance means that a class can inherit properties and methods from a superclass. The class that inherited the properties and methods is called the subclass. Swift only has the capability of single inheritance, meaning that a Swift class can only inherit from one superclass. Also, inheritance only applies to reference types, a.k.a classes.
+In the context of OOP, inheritance means that a class can inherit properties and methods from a superclass. The class that inherited the properties and methods is called the subclass. Swift only has the capability of single inheritance, meaning that a Swift class can only inherit from one superclass. Also, inheritance only applies to reference types, a.k.a classes.
  */
 /*:
  ## The Base Class
- Classes that don’t inherit from any other class is called the base class. Unlike most OOP languages, Swift classes don’t inherit from a universal base class like *Object*. Classes you define without specifying a superclass automatically become base classes for you do subclass.
+ Classes that don’t inherit from any other class is called the base class. Unlike most OOP languages, Swift classes don’t inherit from a universal base class like *Object*. Classes you define without specifying a superclass automatically become base classes for you to subclass.
  */
 class Father {
 
@@ -129,7 +126,7 @@ print(amelia.sayHi())
  A subclass can change the implementation of a property and method (both type and instance) or a subscript that is inherited from a superclass by *overriding* the implementation inherited. This is done with the `override` keyword in front of the property, method or subscript you want to override.
  */
 /*:
- ## Overriding Methods
+ ### Overriding Methods
  Overriding a method (either instance or type) is done by placing the `override` keyword before the function definition. If you override a method that is not defined in the superclass, you will receive a compiler error. When you override a method, it’s the implementation of the subclass that gets executed.
  */
 class Grandson: Son {
@@ -147,7 +144,7 @@ print(grandson.sayHello())
  Above we have created a new class `Grandson` inheriting from the `Son` class. We want the `sayHello` method of the `Grandson` class to provide a different implementation. We do this by overriding the `sayHello` method defined in the base class `Father`.
  */
 /*:
- ## Overriding Properties
+ ### Overriding Properties
  Overriding a property (either instance or type) is similar to overriding a function; you also place the override keyword before the property definition. It doesn’t matter if the superclass’s property is a stored property or computed property. You can override a property in a subclass as long as the name and type are the same as in the superclass. You can override a property’s get and set methods as well as the property observers.
  */
 class Granddaughter: Daughter {
@@ -413,37 +410,30 @@ for anyThing in anyThings {
  Above we do something similar to storing instances of `AnyObject`, here we store an array of `Any`, representing any type, such as tuples of function types. Again we iterate and use the `switch-case` statement to match on a type and print the correct string.
  */
 /*:
- **Exercise:**
- Build upon your `Dog` and `Cat` classes in the previous exercise by applying inheritance. Create a superclass that both `Dog` and `Cat` can inherit from. Modify your `Owner` class to hold a collection of pets. Iterate over your pets and print what sound the pet makes.
- */
-/*:
+ - - -
+ * callout(Exercise): Build upon your `Dog` and `Cat` classes in the previous exercise by applying inheritance. Create a superclass that both `Dog` and `Cat` can inherit from. Modify your `Owner` class to hold a collection of pets. Iterate over your pets and print what sound the pet makes.
+
  **Constraints:**
  - Create a new class as the superclass to `Dog` and `Cat`
  - The superclass needs to have a method of `makeSound()`
  - The subclasses need to override the `makeSound()` method and print the appropriate sound
  - The `pets` property needs to store both `Dog` and `Cat` instances
- */
-/*:
- **Checkpoint:**
- At this point, you have learned how to leverage inheritance to share and reuse code and how to access the properties, methods and subscripts of a superclass. Overriding a superclass provide a subclass with having it’s custom implementation of a property, method or subscript. You can prevent a class, property, method or subscript from being overridden with he `final` keyword. `AnyObject` and `Any` are used to mark a type or collection of types as unspecified types while using the type check operator and type cast operator to convert the type type into a type you are interested in.
- */
-/*:
+
+ * callout(Checkpoint): At this point, you have learned how to leverage inheritance to share and reuse code and how to access the properties, methods and subscripts of a superclass. Overriding a superclass provide a subclass with having it’s custom implementation of a property, method or subscript. You can prevent a class, property, method or subscript from being overridden with he `final` keyword. `AnyObject` and `Any` are used to mark a type or collection of types as unspecified types while using the type check operator and type cast operator to convert the type type into a type you are interested in.
+
  **Keywords to remember:**
  - `super` = To access a superclass's properties, methods or subscripts
- - `override` = Overriding a property or method of a base class
- - `required` = All subclasses must implement an initializer that is `required`
+ - `override` = Custom implementation within the subclass of a superclass's properties, methods or subscripts
+ - `required` = An initializer that all subclasses must implement
  - `final` = A class, property or method that cannot be overridden
  - `is` = Type check operator to check if an instance is of a specific type
- - `as` = Type cast operator that will downcast to the subclass type. Use `as?` of casting can fail, use `as!` if downcast will always succeed
+ - `as` = Type cast operator that will downcast to the subclass type. Use `as?` is casting can fail; use `as!` if downcast will always succeed
  - `AnyObject` = Represents an instance of any class type
  - `Any` = Represents an instance of any type, including function types and tuples
+ * callout(Supporting Materials): Chapters and sections from the Guide and Vidoes from WWDC
+ - [Guide: Inheritance](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Inheritance.html)
+ - [Guide: Type Casting](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html)
+ - [Video: Intermediate Swift](https://developer.apple.com/videos/play/wwdc2014-403/)
+ - - -
+ [Table of Contents](@first) | [Previous](@previous) | [Next](@next)
  */
-/*:
-**Supporting Chapters:**
-- [Inheritance](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Inheritance.html)
-- [Type Casting](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html)
-- [Video: Intermediate Swift](https://developer.apple.com/videos/play/wwdc2014-403/)
-*/
-/*:
-[Table of Contents](Table%20of%20Contents) | [Previous](@previous) | [Next](@next)
-*/
