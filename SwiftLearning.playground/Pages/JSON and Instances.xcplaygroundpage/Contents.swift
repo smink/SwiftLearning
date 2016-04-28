@@ -59,9 +59,7 @@ class PersonSummary {
     var id: String?     // used to retrieve the PersonDetail
     var name: String?   // used for display
     var phone: String?  // used for user to push to call
-    var test = true
 }
-
 /*:
  Both enumerations `NamePrefix` and `NameSuffix` represent in a static type-safe way the valid options for a person's name prefix and suffix. Notice that both enumerations are of type `String` giving us the rawValue of the literal case.
  */
@@ -75,7 +73,6 @@ enum NameSuffix: String {
     case Jr
     case Sr
 }
-
 /*:
  `Name` represents all the parts of a name. We model the name this way enabling us to format the name any way we wish.
  */
@@ -87,7 +84,6 @@ class Name {
     var prefix: NamePrefix?
     var suffix: NameSuffix?
 }
-
 /*:
  `Coordinate` represents a geo coordinate that can be leveraged on a map. It is acceptable that `Coordinate` is a structure because inheritance is not valid and we don't want `latitude` to be changed without `longitude` being reset.
  */
@@ -96,7 +92,6 @@ struct Coordinate {
     var latitude: Double?
     var longitude: Double?
 }
-
 /*:
  `Address` represents an address with all the parts of an address separated out into properties.
  */
@@ -110,7 +105,6 @@ class Address {
     var state: String?
     var country: String?
 }
-
 /*:
  `PersonDetail` is comprised of all the instances above to represent what a person would look like at a detail level. The `PersonDetail` type is what would be used on a detail screen displaying all the details of a person.
  */
@@ -172,7 +166,7 @@ class PersonDetail {
  */
 var summaryPayload: String?
 do {
-    summaryPayload = try FileUtils.getFileContents("persons", type: "json")
+    summaryPayload = try FileUtils.getFileContents("persons.json")
 } catch FileError.ReadError(let error) {
     print(error)
 } catch FileError.NotFound(let path) {
@@ -185,7 +179,7 @@ if summaryPayload != nil {
 
 var detailPayload: String?
 do {
-    detailPayload = try FileUtils.getFileContents("person", type: "json")
+    detailPayload = try FileUtils.getFileContents("person.json")
 } catch FileError.ReadError(let error) {
     print(error)
 } catch FileError.NotFound(let path) {
@@ -341,7 +335,6 @@ extension PersonSummary {
         return dictionary
     }
 }
-
 /*:
  Create an extension to get an `Array` representation of `PersonSummary` instances but use type constraints to ensure that the `asDictionary` computed propety is only available on arrays where the element is of type `PersonSummary `.
  */
@@ -369,7 +362,7 @@ do {
     let jsonData = try NSJSONSerialization.dataWithJSONObject(personSummaries.asDictionary, options: .PrettyPrinted)
     
     // create a String from the NSData
-    let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)!
+    let jsonString = String(data: jsonData, encoding: NSUTF8StringEncoding)!
     
     print(jsonString)
     
@@ -378,7 +371,7 @@ do {
 }
 /*:
  - - -
- * callout(Exercise): Using the data in your Container from Exercise 13, create the appropriate JSON payload and deserialize it into instance of your data to populate your container with the JSON payload. Then serialize the data back into a JSON payload.
+ * callout(Exercise): Using the data types in your Container from Exercise 13, create the appropriate JSON payload. Deserialize the JSON payload into instances of your data types and populate your container. Then serialize the instances back into a JSON payload.
  
  **Constraints:**
  - New methods where appropriate to deserialize and serialize the data in your container.
